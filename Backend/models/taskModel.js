@@ -1,17 +1,19 @@
 import mongoose from 'mongoose';
 
 const taskSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
+
   description: {
     type: String,
     required: true,
   },
-  status: {
+  completed: {
     type: Boolean,
   default: false,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User", // referencing User model to connect to users collection in MongoDB.
+    required: true,
   },
 }, {
   timestamps: true
